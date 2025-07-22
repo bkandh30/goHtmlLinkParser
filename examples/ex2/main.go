@@ -2,35 +2,19 @@ package main
 
 import (
 	"fmt"
-	"strings"
+	"os"
 
 	link "goHtmlLinkParser.bhavya.net"
 )
 
-var exHTML = `
-<html>
-<head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body>
-  <h1>Social stuffs</h1>
-  <div>
-    <a href="https://www.twitter.com/joncalhoun">
-      Check me out on twitter
-      <i class="fa fa-twitter" aria-hidden="true"></i>
-    </a>
-    <a href="https://github.com/gophercises">
-      Gophercises is on <strong>Github</strong>!
-    </a>
-  </div>
-</body>
-</html>
-`
-
 func main() {
-	r := strings.NewReader(exHTML)
+	file, err := os.Open("ex2.html")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
 
-	links, err := link.Parse(r)
+	links, err := link.Parse(file)
 	if err != nil {
 		panic(err)
 	}

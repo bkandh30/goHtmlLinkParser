@@ -2,23 +2,19 @@ package main
 
 import (
 	"fmt"
-	"strings"
+	"os"
 
 	link "goHtmlLinkParser.bhavya.net"
 )
 
-var exHTML = `
-<html>
-<body>
-  <a href="/dog-cat">dog cat <!-- commented text SHOULD NOT be included! --></a>
-</body>
-</html>
-`
-
 func main() {
-	r := strings.NewReader(exHTML)
+	file, err := os.Open("ex4.html")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
 
-	links, err := link.Parse(r)
+	links, err := link.Parse(file)
 	if err != nil {
 		panic(err)
 	}

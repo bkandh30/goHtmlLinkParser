@@ -2,25 +2,19 @@ package main
 
 import (
 	"fmt"
-	"strings"
+	"os"
 
 	link "goHtmlLinkParser.bhavya.net"
 )
 
-var exHTML = `
-<html>
-<body>
-  <h1>Hello!</h1>
-  <a href="/other-page">A link to another page</a>
-  <a href="/another-page">A link to second page</a>
-</body>
-</html>
-`
-
 func main() {
-	r := strings.NewReader(exHTML)
+	file, err := os.Open("ex1.html")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
 
-	links, err := link.Parse(r)
+	links, err := link.Parse(file)
 	if err != nil {
 		panic(err)
 	}
