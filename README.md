@@ -8,7 +8,12 @@ A simple HTML link parser that extracts all anchor tags (`<a>`) and their associ
 go get goHtmlLinkParser.bhavya.net
 ```
 
-If you want to clone this git
+If you want to clone this git repository:
+
+```bash
+git clone https://github.com/bkandh30/goHtmlLinkParser.git
+cd goHtmlLinkParser
+```
 
 ## Usage
 
