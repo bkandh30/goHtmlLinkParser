@@ -1,4 +1,4 @@
-module goHtmlLinkParser.bhavya.net
+module github.com/bkandh30/goHtmlLinkParser
 
 go 1.24.0
 
